@@ -10,20 +10,20 @@
 - 知道哪些组件和动画已经存在
 - 知道修改后该如何做视觉复核或批量回归
 
-当前项目只保留 5 份核心文件：
+当前项目只保留 4 类核心参考：
 
 - [路演思路.md](/Users/xpan/Desktop/ai%20分享/路演思路.md)
   - 原始内容源，负责“讲什么”
-- [ai_roadshow_修改规格说明.md](/Users/xpan/Desktop/ai%20分享/ai_roadshow_修改规格说明.md)
-  - 历史修改规格与关键修复基线，负责“哪些问题已经被明确要求修”
 - [README_AI接手指南.md](/Users/xpan/Desktop/ai%20分享/README_AI接手指南.md)
   - 当前唯一综合指导文档，负责“后续怎么继续改”
 - [ai-roadshow-s21-master.html](/Users/xpan/Desktop/ai%20分享/ai-roadshow-s21-master.html)
   - 从 `21` 页抽离出的正文页可复用母版，负责“统一底板长什么样”
 - [ai-roadshow-chapter-master.html](/Users/xpan/Desktop/ai%20分享/ai-roadshow-chapter-master.html)
   - 章节页可复用母版，负责“章节页统一底板长什么样”
+- [ai-roadshow.html](/Users/xpan/Desktop/ai%20分享/ai-roadshow.html)
+  - 唯一真正要修改的主实现文件
 
-以下冗余指导文件的内容已并入本文件，不再独立保留：
+以下历史指导文件和中间清单已并入本文件，不再独立保留：
 
 - `html_ppt_设计要求汇总.md`
 - `html_ppt_全量需求与复用指南.md`
@@ -45,16 +45,14 @@
 
 1. `/Users/xpan/Desktop/ai 分享/README_AI接手指南.md`
 2. `/Users/xpan/Desktop/ai 分享/路演思路.md`
-3. `/Users/xpan/Desktop/ai 分享/ai_roadshow_修改规格说明.md`
-4. `/Users/xpan/Desktop/ai 分享/ai-roadshow-s21-master.html`
-5. `/Users/xpan/Desktop/ai 分享/ai-roadshow-chapter-master.html`
-6. `/Users/xpan/Desktop/ai 分享/ai-roadshow.html`
+3. `/Users/xpan/Desktop/ai 分享/ai-roadshow-s21-master.html`
+4. `/Users/xpan/Desktop/ai 分享/ai-roadshow-chapter-master.html`
+5. `/Users/xpan/Desktop/ai 分享/ai-roadshow.html`
 
 其中：
 
 - `README_AI接手指南.md` 是总入口
 - `路演思路.md` 负责原始内容
-- `ai_roadshow_修改规格说明.md` 负责历史修改基线
 - `ai-roadshow-s21-master.html` 负责正文页统一母版样式参考
 - `ai-roadshow-chapter-master.html` 负责章节页统一母版样式参考
 - `ai-roadshow.html` 是唯一真正要改的主实现文件
@@ -66,15 +64,13 @@
 1. `README_AI接手指南.md`
 2. `ai-roadshow-s21-master.html`
 3. `ai-roadshow-chapter-master.html`
-4. `ai_roadshow_修改规格说明.md`
-5. `路演思路.md`
+4. `路演思路.md`
 
 含义：
 
 - `README_AI接手指南.md` 决定“怎么改、先想什么、什么是当前总原则”
 - `ai-roadshow-s21-master.html` 决定“正文页统一底板长什么样”
 - `ai-roadshow-chapter-master.html` 决定“章节页统一底板长什么样”
-- `ai_roadshow_修改规格说明.md` 决定“哪些旧问题和修复基线不能回退”
 - `路演思路.md` 决定“内容本身讲什么，不负责版式策略”
 
 ### 全局修改前必做
@@ -83,10 +79,9 @@
 
 1. 重新阅读 `README_AI接手指南.md`
 2. 重新阅读 `路演思路.md`
-3. 重新阅读 `ai_roadshow_修改规格说明.md`
-4. 重新阅读 `ai-roadshow-s21-master.html`
-5. 重新阅读 `ai-roadshow-chapter-master.html`
-6. 再回到 `ai-roadshow.html` 看当前实现
+3. 重新阅读 `ai-roadshow-s21-master.html`
+4. 重新阅读 `ai-roadshow-chapter-master.html`
+5. 再回到 `ai-roadshow.html` 看当前实现
 
 不能因为前面改过几轮，就跳过这一步。全局修改前必须重新建立一次大局观。
 
@@ -980,7 +975,7 @@ DOM 上对应：
 
 后续任何 AI 接手，建议严格按这个流程：
 
-1. 先读 `README_AI接手指南.md`，再读 `ai-roadshow-s21-master.html` 和 `ai_roadshow_修改规格说明.md`
+1. 先读 `README_AI接手指南.md`，再读 `ai-roadshow-s21-master.html` 和 `ai-roadshow-chapter-master.html`
 2. 如果不是只修单页，先完整过一遍该章节，再决定分页、合并、拆分和顺序
 3. 优先用 `slide id` 定位具体页面；必要时再用 `visible page` 对齐用户口头页码
 4. 如果已有截图或批量验收图，先看图；如果当前轮次不做逐页截图，也至少先看页面结构和现有实现，不要只扫文字
