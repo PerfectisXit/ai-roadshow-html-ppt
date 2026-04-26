@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Roadshow S21 Master</title>
+  <!-- 这份文件是视觉母版参考，不是主实现文件。真正修改仍应落在 ai-roadshow.html。 -->
+  <!-- 母版只固定视觉底板，不固定内容结构。 -->
+  <!-- 母版本身也必须先收束干净：卡片重叠、空框拉大、低级补位都不允许被带入后续页面。 -->
+  <!-- 任何只对设计者/讲者/AI自己有意义的提示语、备注语、分镜语，都只能写成代码注释，不能显示在页面里。 -->
+  <!-- 页面内容少时，先放大真正重要的文字，再用有意义的动作型组件处理留白，不允许用重复文字凑满。 -->
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Lora:ital,wght@0,500;0,600;0,700;1,500&family=Noto+Sans+SC:wght@300;400;500;700;900&family=Noto+Serif+SC:wght@600;700;900&display=swap");
+
+    :root {
+      --master-bg-top: #faf8f4;
+      --master-bg-bottom: #f6f2eb;
+      --master-bg-glow: rgba(194, 186, 174, 0.045);
+      --master-card: #ffffff;
+      --master-card-soft: #fbf8f3;
+      --master-card-muted: #f7f2eb;
+      --master-line: #e4ddd3;
+      --master-line-soft: #ede4d8;
+      --master-title: #1a1714;
+      --master-text: #6b6055;
+      --master-text-soft: #8c8278;
+      --master-accent: #c96842;
+      --master-accent-soft: rgba(201, 104, 66, 0.12);
+      --master-shadow: 0 4px 18px rgba(26, 23, 20, 0.08), 0 1px 4px rgba(26, 23, 20, 0.04);
+      --master-radius-xl: 22px;
+      --master-radius-lg: 20px;
+      --master-radius-md: 16px;
+      --master-radius-sm: 12px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background: #d9d3c7;
+      font-family: "DM Sans", "Noto Sans SC", sans-serif;
+      color: var(--master-title);
+    }
+
+    .deck-shell {
+      width: 100vw;
+      height: 100vh;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+    }
+
+    .slide {
+      position: relative;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse 72% 56% at 0% 0%, var(--master-bg-glow) 0%, transparent 56%),
+        radial-gradient(ellipse 42% 30% at 100% 100%, rgba(194, 186, 174, 0.03) 0%, transparent 54%),
+        linear-gradient(180deg, var(--master-bg-top) 0%, var(--master-bg-bottom) 100%);
+      transform-origin: center center;
+    }
+
+    .slide-inner {
+      position: absolute;
+      inset: 0;
+      padding: 0 26px 22px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .page-pill {
+      position: absolute;
+      top: 12px;
+      right: 18px;
+      font-family: "DM Mono", monospace;
+      font-size: 13px;
+      letter-spacing: 0.06em;
+      color: #7e7368;
+      padding: 5px 11px;
+      border-radius: 999px;
+      background: rgba(255, 252, 248, 0.96);
+      border: 1px solid rgba(228, 221, 211, 0.76);
+    }
+
+    .master-header {
+      padding: 8px 0 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .master-header::after {
+      content: "";
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(208, 104, 66, 0.42), rgba(208, 104, 66, 0.12) 55%, transparent 100%);
+    }
+
+    .master-title {
+      margin: 0;
+      font-family: "Lora", "Noto Serif SC", serif;
+      font-size: 50px;
+      line-height: 1.14;
+      letter-spacing: -0.015em;
+      font-weight: 600;
+      color: var(--master-title);
+      max-width: 1420px;
+    }
+
+    .title-prefix,
+    .title-main,
+    .title-sep {
+      font-size: 0.72em;
+    }
+
+    .title-prefix {
+      font-family: "DM Sans", "Noto Sans SC", sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      color: #7a6d61;
+    }
+
+    .title-sep {
+      display: inline-block;
+      margin: 0 0.32em 0 0.2em;
+      color: #b8aea3;
+      font-weight: 500;
+    }
+
+    .master-body {
+      flex: 1;
+      display: flex;
+      align-items: center;
+    }
+
+    .master-stage {
+      width: 100%;
+      height: 560px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 18px;
+    }
+
+    .master-stage.ratio-equal {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .master-stage.ratio-58-42 {
+      grid-template-columns: 1.16fr 0.84fr;
+    }
+
+    .master-stage.ratio-64-36 {
+      grid-template-columns: 1.28fr 0.72fr;
+    }
+
+    .master-stage.ratio-72-28 {
+      grid-template-columns: 1.44fr 0.56fr;
+    }
+
+    .master-stage.single {
+      grid-template-columns: 1fr;
+    }
+
+    .master-main,
+    .master-side {
+      min-height: 100%;
+      height: 100%;
+    }
+
+    .master-main {
+      display: flex;
+    }
+
+    .master-main > * {
+      width: 100%;
+      min-height: 100%;
+    }
+
+    .master-card,
+    .master-panel,
+    .master-micro-card {
+      background: var(--master-card);
+      border: 1px solid var(--master-line);
+      box-shadow: var(--master-shadow);
+    }
+
+    .master-panel {
+      border-radius: var(--master-radius-xl);
+      background: linear-gradient(180deg, #fffefe, var(--master-card-soft));
+      padding: 12px 12px 14px;
+      display: grid;
+      grid-template-rows: 1fr auto;
+      gap: 8px;
+    }
+
+    .master-demo-shell {
+      min-height: 412px;
+      border-radius: var(--master-radius-lg);
+      border: 1px solid var(--master-line);
+      background: var(--master-card);
+      overflow: hidden;
+      box-shadow: var(--master-shadow);
+      display: grid;
+      grid-template-rows: 40px 1fr 44px;
+    }
+
+    .master-demo-topbar,
+    .master-demo-footer {
+      display: flex;
+      align-items: center;
+      padding: 0 14px;
+      background: #f5f1eb;
+      color: #a89e93;
+      border-bottom: 1px solid var(--master-line);
+      font-size: 13px;
+    }
+
+    .master-demo-footer {
+      border-bottom: 0;
+      border-top: 1px solid var(--master-line);
+      font-size: 12px;
+    }
+
+    .master-demo-body {
+      padding: 18px;
+      display: grid;
+      gap: 14px;
+      align-content: start;
+      background: #fff;
+    }
+
+    .master-demo-bubble {
+      max-width: 84%;
+      padding: 11px 14px;
+      border-radius: 16px;
+      font-size: 14px;
+      line-height: 1.58;
+    }
+
+    .master-demo-bubble.user {
+      justify-self: end;
+      color: var(--master-title);
+      background: #fef0ea;
+      border: 1px solid rgba(201, 104, 66, 0.18);
+      border-bottom-right-radius: 5px;
+    }
+
+    .master-demo-bubble.ai {
+      justify-self: start;
+      color: var(--master-title);
+      background: #f0f5ff;
+      border: 1px solid rgba(100, 130, 220, 0.15);
+      border-bottom-left-radius: 5px;
+    }
+
+    .master-bottom-pair {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .master-feature {
+      min-height: 84px;
+      padding: 11px 13px;
+      border-radius: 14px;
+      background: var(--master-card);
+      border: 1px solid var(--master-line);
+      box-shadow: 0 1px 4px rgba(26, 23, 20, 0.06);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    .master-feature strong {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .master-feature span {
+      font-size: 12.5px;
+      line-height: 1.5;
+      color: var(--master-text);
+    }
+
+    .master-side {
+      display: grid;
+      grid-template-rows: 188px minmax(0, 1fr);
+      gap: 12px;
+      position: relative;
+    }
+
+    .master-side::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto auto 0;
+      width: 100%;
+      height: 188px;
+      background: #fff;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .master-summary,
+    .master-action-board {
+      position: relative;
+      z-index: 1;
+      border-radius: var(--master-radius-lg);
+      padding: 16px 18px;
+    }
+
+    .master-summary {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .mini-label {
+      color: var(--master-accent);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 7px;
+    }
+
+    .master-summary h3,
+    .master-action-board h3 {
+      margin: 0;
+      font-family: "Lora", "Noto Serif SC", serif;
+      font-size: 23px;
+      line-height: 1.3;
+      font-weight: 600;
+      color: var(--master-title);
+    }
+
+    .master-summary p,
+    .master-action-board p,
+    .master-action-module p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--master-text);
+    }
+
+    .master-stat-ribbon {
+      display: flex;
+      border: 1px solid var(--master-line);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 12px;
+      background: #f5f1eb;
+    }
+
+    .master-stat {
+      flex: 1;
+      text-align: center;
+      padding: 9px 10px;
+      border-right: 1px solid var(--master-line);
+    }
+
+    .master-stat:last-child {
+      border-right: 0;
+    }
+
+    .master-stat strong {
+      display: block;
+      font-family: "Lora", serif;
+      font-size: 17px;
+      line-height: 1.1;
+      color: #a24f2e;
+    }
+
+    .master-stat span {
+      display: block;
+      margin-top: 2px;
+      font-size: 10px;
+      color: #a89e93;
+    }
+
+    .master-action-board {
+      display: grid;
+      grid-template-rows: auto auto 1fr;
+      gap: 10px;
+      overflow: hidden;
+    }
+
+    .master-action-modules {
+      display: grid;
+      grid-template-rows: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 10px;
+      min-height: 0;
+    }
+
+    .master-action-module {
+      border-radius: var(--master-radius-md);
+      border: 1px solid var(--master-line-soft);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(249, 245, 239, 0.96));
+      padding: 12px;
+      display: grid;
+      grid-template-rows: auto auto 1fr;
+      gap: 8px;
+      overflow: hidden;
+    }
+
+    .master-module-top {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .master-module-top strong {
+      font-size: 15px;
+    }
+
+    .master-module-top span {
+      font-size: 12px;
+      color: #a19184;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .master-demo-box {
+      border-radius: 12px;
+      border: 1px solid var(--master-line-soft);
+      background: var(--master-card-muted);
+      padding: 10px;
+      min-height: 0;
+    }
+
+    .master-chip-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-content: center;
+    }
+
+    .master-chip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 28px;
+      padding: 6px 11px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 500;
+      background: rgba(165, 157, 147, 0.16);
+      border: 1px solid rgba(165, 157, 147, 0.18);
+      color: #84796d;
+    }
+
+    .master-chip.hot {
+      background: rgba(201, 104, 66, 0.11);
+      border-color: rgba(201, 104, 66, 0.2);
+      color: #a24f2e;
+    }
+
+    .master-note {
+      position: absolute;
+      left: 24px;
+      bottom: 18px;
+      width: auto;
+      max-width: 420px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.74);
+      border: 1px dashed rgba(201, 104, 66, 0.3);
+      font-size: 14px;
+      line-height: 1.6;
+      color: #786d61;
+    }
+
+    .master-flex-note {
+      position: absolute;
+      right: 24px;
+      bottom: 18px;
+      max-width: 480px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.76);
+      border: 1px dashed rgba(228, 221, 211, 0.9);
+      font-size: 13px;
+      line-height: 1.58;
+      color: #7b7065;
+    }
+
+    .master-variant-bar {
+      position: absolute;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%);
+      width: 720px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .master-variant-card {
+      min-height: 96px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.78);
+      border: 1px dashed rgba(228, 221, 211, 0.96);
+      display: grid;
+      gap: 6px;
+      align-content: center;
+      text-align: left;
+      color: #7b7065;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .master-variant-card strong {
+      color: #1a1714;
+      font-size: 16px;
+      line-height: 1.32;
+    }
+
+    .master-variant-card span {
+      color: #8f8479;
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+  <div class="deck-shell">
+    <section class="slide">
+      <div class="slide-inner">
+        <div class="page-pill">XX / 51</div>
+
+        <header class="master-header">
+          <h2 class="master-title">
+            <span class="title-prefix">案例名 人名</span>
+            <span class="title-sep">丨</span>
+            <span class="title-main">这里填这一页真正的标题内容</span>
+          </h2>
+        </header>
+
+        <div class="master-body">
+          <div class="master-stage ratio-58-42">
+            <div class="master-main">
+              <div class="master-panel">
+                <div class="master-demo-shell">
+                  <div class="master-demo-topbar">这里通常放主舞台标题，比如 AI 对话仿真窗口 / 桌面操作台 / 扫描台</div>
+                  <div class="master-demo-body">
+                    <div class="master-demo-bubble user">这里放用户输入、任务目标、检索请求或操作指令。</div>
+                    <div class="master-demo-bubble ai">这里放系统反馈、流式输出、识别结果、推理结果或示意文本。</div>
+                    <div class="master-demo-bubble user">如果这一页不是聊天页，这里可以换成图表、扫描图、路径图或桌面窗口。</div>
+                  </div>
+                  <div class="master-demo-footer">母版原则：主舞台固定尺寸，内部滚动或内部换组件，不让容器自己乱涨高。</div>
+                </div>
+
+                <div class="master-bottom-pair">
+                  <div class="master-feature">
+                    <strong>左下说明卡 A</strong>
+                    <span>这里通常放“这一块在做什么”，用于承接主舞台的第一层解释。</span>
+                  </div>
+                  <div class="master-feature">
+                    <strong>左下说明卡 B</strong>
+                    <span>这里通常放“这一块为什么重要”，作为左列收束。</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="master-side">
+              <div class="master-card master-summary">
+                <div>
+                  <div class="mini-label">一句话概括</div>
+                  <h3>这里放一条高密度总结句，负责快速收束观众认知</h3>
+                </div>
+                <p>如果这页需要额外说明，可以在这里放一小段解释，但不要变成段落堆砌。</p>
+                <div class="master-stat-ribbon">
+                  <div class="master-stat"><strong>指标 A</strong><span>简短解释</span></div>
+                  <div class="master-stat"><strong>指标 B</strong><span>简短解释</span></div>
+                  <div class="master-stat"><strong>指标 C</strong><span>简短解释</span></div>
+                </div>
+              </div>
+
+              <div class="master-card master-action-board">
+                <div class="mini-label">动作板 / 证据板 / 路径板</div>
+                <h3>这里是右侧真正承载高度的模块，不要再用空说明卡硬撑</h3>
+                <div class="master-action-modules">
+                  <div class="master-action-module">
+                    <div class="master-module-top">
+                      <strong>模块一</strong>
+                      <span>action 01</span>
+                    </div>
+                    <p>如果文字少，就直接做成扫描、翻译、生成、命中、排序等动作型组件。</p>
+                    <div class="master-demo-box">
+                      <div class="master-chip-cloud">
+                        <span class="master-chip">输入 A</span>
+                        <span class="master-chip">输入 B</span>
+                        <span class="master-chip">输入 C</span>
+                        <span class="master-chip hot">结果 A</span>
+                        <span class="master-chip hot">结果 B</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="master-action-module">
+                    <div class="master-module-top">
+                      <strong>模块二</strong>
+                      <span>action 02</span>
+                    </div>
+                    <p>和左列真正对应的“关键收束模块”，后续改页时要注意它和左列收束卡的底边关系。</p>
+                    <div class="master-demo-box">
+                      <div class="master-chip-cloud">
+                        <span class="master-chip">证据 1</span>
+                        <span class="master-chip">证据 2</span>
+                        <span class="master-chip hot">高亮 1</span>
+                        <span class="master-chip hot">高亮 2</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="master-note">
+          用法：保留这份母版的标题区、页码、卡片语法和整体配色，只替换每页自己的内容与专属组件。
+          不要机械复制“聊天窗 + 右动作板”的长相，要复用它背后的秩序、对齐、密度与产品感。
+          有意义的页面前缀应尽量并入标题同一行，不要再单独显示成一行小字。
+          这份母版不是默认双栏模板；单栏、大字主句页、问题页、满屏主组件页都可以直接基于这套底板展开。
+        </div>
+
+        <div class="master-flex-note">
+          这份母版固定的是视觉底板，不固定结构比例。`master-stage` 可以改单栏，也可以换成 `ratio-equal / ratio-64-36 / ratio-72-28`。
+          遇到留白时，先判断空白区域更适合被主舞台长大吃掉，还是更适合补一个扫描、筛选、命中、追溯之类的动作型组件。
+          放大字号时要和外框、内边距一起协调放大；不同留白区的动效形式也不要同质化复用。
+          如果页面文字本来就不多，先减少文字、放大主句，再上一个更大的有意义动效组件，不要为了守双栏而补说明卡。
+          如果页面改完仍然发空，先反问：主组件是不是还没有真正贴着这页的讲演意图；其次再看组件内部和其他区块是否还可以一起做实。
+          任何时候都不要让文字量超过容器所能舒服承载的范围；一旦出现溢出、拥挤或硬塞感，优先删字、收句，必要时直接删掉那个组件。
+          卡片重叠、边框相压、模块遮挡是红线；一旦出现，就说明页面还没有收束好，不能交付。
+          处理留白时，不要把“单纯拉大空卡片”当成默认办法；应优先考虑更有表现力的动效组件、logo、图标、示意图或内嵌 SVG 图形。
+          讲到品牌、软件、平台，或“眼睛 / 手 / 大脑 / 扫描 / 命中 / 归并”这类抽象对象时，应优先考虑用标准 logo、图标或图形化表达去强化主题并消化留白。
+          新增组件必须“挣到自己的位置”：如果它既不帮助理解，也不帮助证明，更不帮助收束，就不要保留。
+          绝不允许把“先讲什么、后讲什么、这页作用是什么”这类注释语直接写进页面里；同一页也不允许为了规整而重复同一层信息。
+          真正开始改之前，要先过整章逻辑，再想清楚这页演讲者最想强调什么、观众最该先看到哪里，再决定页面结构与组件。
+        </div>
+
+        <div class="master-variant-bar">
+          <div class="master-variant-card">
+            <span>Variant 01</span>
+            <strong>单栏大主句 + 超大组件</strong>
+            <div>适合问题页、立意页、灵魂三问页，不必强行拆双栏。</div>
+          </div>
+          <div class="master-variant-card">
+            <span>Variant 02</span>
+            <strong>少量重文字 + 满屏拟真舞台</strong>
+            <div>适合对话、扫描、操作、检索、映射等强动作页面。</div>
+          </div>
+          <div class="master-variant-card">
+            <span>Variant 03</span>
+            <strong>不规则拼板，而不是均匀排卡</strong>
+            <div>先看主叙事和留白形状，再决定哪个块该长大。</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

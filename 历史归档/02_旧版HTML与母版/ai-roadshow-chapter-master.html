@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Roadshow Chapter Master</title>
+  <style>
+    :root {
+      --bg: #f7f2ea;
+      --surface: rgba(255,255,255,0.88);
+      --surface-strong: rgba(255,255,255,0.96);
+      --line: rgba(124, 98, 67, 0.14);
+      --line-strong: rgba(124, 98, 67, 0.22);
+      --text: #1d1813;
+      --muted: #6d6256;
+      --accent: #b57739;
+      --shadow: 0 20px 60px rgba(78, 55, 24, 0.10);
+      --radius-xl: 30px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle at top left, rgba(216, 184, 141, 0.24), transparent 34%),
+        radial-gradient(circle at bottom right, rgba(175, 199, 214, 0.22), transparent 32%),
+        var(--bg);
+      color: var(--text);
+      font-family: "PingFang SC", "Noto Sans SC", sans-serif;
+    }
+
+    .page {
+      width: 1600px;
+      aspect-ratio: 16 / 9;
+      padding: 86px 96px 82px;
+      border-radius: 34px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.7), rgba(255,255,255,0.82));
+      border: 1px solid rgba(255,255,255,0.65);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page::before {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border-radius: 26px;
+      border: 1px solid rgba(124, 98, 67, 0.08);
+      pointer-events: none;
+    }
+
+    .header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 40px;
+      margin-bottom: 34px;
+    }
+
+    .mark {
+      font-size: 14px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 18px;
+    }
+
+    .title {
+      margin: 0 0 16px;
+      font-size: 56px;
+      line-height: 1.06;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      font-family: "Noto Serif SC", serif;
+    }
+
+    .subtitle {
+      margin: 0;
+      max-width: 680px;
+      font-size: 24px;
+      line-height: 1.65;
+      color: var(--muted);
+    }
+
+    .progress-pill {
+      padding: 12px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--line-strong);
+      background: rgba(255,255,255,0.74);
+      font-size: 18px;
+      color: var(--muted);
+      min-width: 110px;
+      text-align: center;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+      gap: 28px;
+      align-items: stretch;
+      height: calc(100% - 150px);
+    }
+
+    .copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 18px;
+      padding-right: 24px;
+    }
+
+    .copy strong {
+      font-size: 36px;
+      line-height: 1.18;
+      font-family: "Noto Serif SC", serif;
+    }
+
+    .copy p {
+      margin: 0;
+      font-size: 22px;
+      line-height: 1.72;
+      color: var(--muted);
+    }
+
+    .shell {
+      display: grid;
+      grid-template-rows: 1fr auto;
+      gap: 22px;
+    }
+
+    .panel,
+    .progress {
+      border-radius: var(--radius-xl);
+      background: var(--surface);
+      border: 1px solid var(--line);
+      box-shadow: 0 18px 44px rgba(98, 79, 54, 0.08);
+    }
+
+    .panel {
+      padding: 28px;
+      display: grid;
+      gap: 20px;
+    }
+
+    .panel h3,
+    .progress h3 {
+      margin: 0;
+      font-size: 28px;
+      line-height: 1.2;
+      font-family: "Noto Serif SC", serif;
+    }
+
+    .panel > p {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.72;
+      color: var(--muted);
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .meta-card {
+      min-height: 120px;
+      padding: 18px 18px 16px;
+      border-radius: var(--radius-lg);
+      background: var(--surface-strong);
+      border: 1px solid rgba(124, 98, 67, 0.12);
+      display: grid;
+      gap: 10px;
+      align-content: start;
+    }
+
+    .meta-card strong {
+      font-size: 22px;
+      line-height: 1.24;
+    }
+
+    .meta-card span {
+      font-size: 16px;
+      line-height: 1.62;
+      color: var(--muted);
+    }
+
+    .progress {
+      padding: 24px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .track {
+      display: grid;
+      gap: 12px;
+    }
+
+    .node {
+      display: grid;
+      grid-template-columns: 52px 1fr;
+      gap: 14px;
+      align-items: center;
+      padding: 14px 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(124, 98, 67, 0.10);
+      background: rgba(255,255,255,0.76);
+    }
+
+    .node b {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(181,119,57,0.10);
+      color: var(--accent);
+      font-size: 20px;
+      letter-spacing: 0.04em;
+    }
+
+    .node strong {
+      display: block;
+      font-size: 19px;
+      line-height: 1.35;
+      margin-bottom: 2px;
+    }
+
+    .node span {
+      display: block;
+      font-size: 15px;
+      line-height: 1.55;
+      color: var(--muted);
+    }
+
+    .node.current {
+      background: linear-gradient(135deg, rgba(181,119,57,0.12), rgba(255,255,255,0.86));
+      border-color: rgba(181,119,57,0.20);
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="header">
+      <div>
+        <div class="mark">Chapter Master</div>
+        <h1 class="title">板块二，三个案例，AI 怎么帮我们干活</h1>
+        <p class="subtitle">先用一句话把这一章的讲演任务说清楚，再进入右侧章节信息板和全场进度条。</p>
+      </div>
+      <div class="progress-pill">章节页母版</div>
+    </div>
+    <div class="layout">
+      <div class="copy">
+        <strong>左侧负责定调，不负责堆说明。</strong>
+        <p>这里应该只保留章节标题和一段真正面对观众的引导句，不出现备注式、设计者视角、对制作流程的解释文字。</p>
+      </div>
+      <div class="shell">
+        <div class="panel">
+          <h3>这一章要完成什么</h3>
+          <p>右侧上半部分固定用于章节任务和章节内容概览。四张信息卡足够，不要为了填满继续堆字。</p>
+          <div class="meta-grid">
+            <div class="meta-card"><strong>关键信息 01</strong><span>用简短但有讲演作用的句子概括本章重点。</span></div>
+            <div class="meta-card"><strong>关键信息 02</strong><span>可以讲案例、工具、边界或场景，但不要重复标题层信息。</span></div>
+            <div class="meta-card"><strong>关键信息 03</strong><span>信息卡之间语义应并列清楚，不要一张讲概念、一张讲注释。</span></div>
+            <div class="meta-card"><strong>关键信息 04</strong><span>保持同样的字数密度和对齐感，避免内容一轻一重。</span></div>
+          </div>
+        </div>
+        <div class="progress">
+          <h3>全场进度</h3>
+          <div class="track">
+            <div class="node"><b>01</b><div><strong>一个故事</strong><span>先理解变化为什么发生</span></div></div>
+            <div class="node current"><b>02</b><div><strong>三个案例</strong><span>当前章节高亮，其他章节继续保持可见</span></div></div>
+            <div class="node"><b>03</b><div><strong>怎么用好 AI</strong><span>工具、方法和上手路径</span></div></div>
+            <div class="node"><b>04</b><div><strong>怎么看待 AI</strong><span>边界、责任和红线</span></div></div>
+            <div class="node"><b>05</b><div><strong>回到真实业务</strong><span>把 AI 接进公司场景</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
