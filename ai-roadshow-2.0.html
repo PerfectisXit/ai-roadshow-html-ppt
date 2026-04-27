@@ -10034,6 +10034,148 @@
       background: linear-gradient(90deg, #d8b17c, #8fd0e8);
     }
 
+    #s17a .vibe-tool-value {
+      min-width: 54px;
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+
+    #s17a .vibe-tool-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 12;
+      display: grid;
+      place-items: center;
+      padding: 106px 120px 72px;
+      background:
+        radial-gradient(circle at 50% 46%, rgba(255, 255, 255, 0.54), rgba(244, 235, 224, 0.34) 42%, rgba(22, 17, 12, 0.18) 100%);
+      backdrop-filter: blur(18px) saturate(1.35);
+      -webkit-backdrop-filter: blur(18px) saturate(1.35);
+      opacity: 0;
+      pointer-events: none;
+      transform: scale(0.96);
+      transition: opacity .34s ease, transform .34s ease;
+    }
+
+    #s17a .vibe-tool-overlay.is-live {
+      opacity: 1;
+      pointer-events: auto;
+      transform: scale(1);
+    }
+
+    #s17a .vibe-tool-expanded {
+      width: min(1180px, 100%);
+      border-radius: 28px;
+      overflow: hidden;
+      background: linear-gradient(180deg, rgba(255, 253, 249, 0.88), rgba(244, 234, 223, 0.76));
+      border: 1px solid rgba(255, 255, 255, 0.54);
+      box-shadow: 0 34px 80px rgba(78, 56, 32, 0.24);
+      backdrop-filter: blur(24px) saturate(1.28);
+      -webkit-backdrop-filter: blur(24px) saturate(1.28);
+      color: #241d17;
+    }
+
+    #s17a .vibe-tool-expanded .vchat-tool-topbar {
+      padding: 18px 22px;
+      background: #efe5da;
+      border-bottom: 1px solid rgba(213, 197, 178, 0.88);
+    }
+
+    #s17a .vibe-tool-expanded .vchat-tool-topbar b {
+      font-size: 16px;
+    }
+
+    #s17a .vibe-tool-expanded .vchat-tool-canvas {
+      padding: 28px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+      gap: 24px;
+    }
+
+    #s17a .vibe-tool-expanded .vchat-tool-form {
+      display: grid;
+      gap: 16px;
+    }
+
+    #s17a .vibe-tool-expanded .vchat-tool-row {
+      padding: 18px 20px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(193, 162, 125, 0.18);
+      display: grid;
+      grid-template-columns: 116px minmax(0, 1fr) 76px;
+      align-items: center;
+      gap: 18px;
+    }
+
+    #s17a .vibe-tool-expanded .vchat-tool-row strong {
+      font-size: 20px;
+      color: #241d17;
+    }
+
+    #s17a .vibe-tool-expanded .vchat-tool-row input[type="range"] {
+      width: 100%;
+      accent-color: #b86b38;
+      cursor: pointer;
+    }
+
+    #s17a .vibe-tool-expanded .vchat-tool-row .vibe-tool-value {
+      font-family: "DM Mono", monospace;
+      font-size: 18px;
+      color: #6b5b4b;
+    }
+
+    #s17a .vibe-tool-expanded .vchat-tool-metrics {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    #s17a .vibe-tool-expanded .vchat-tool-metric {
+      min-height: 142px;
+      padding: 20px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(193, 162, 125, 0.18);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    #s17a .vibe-tool-expanded .vchat-tool-metric.is-primary {
+      grid-column: span 2;
+      min-height: 178px;
+      background: linear-gradient(135deg, rgba(255, 249, 241, 0.98), rgba(235, 247, 248, 0.92));
+      border-color: rgba(184, 107, 56, 0.22);
+    }
+
+    #s17a .vibe-tool-expanded .vchat-tool-metric strong {
+      font-size: 19px;
+      color: #574637;
+    }
+
+    #s17a .vibe-tool-expanded .vchat-tool-metric span {
+      font-family: "Space Grotesk", "Noto Sans SC", sans-serif;
+      font-size: 36px;
+      line-height: 1;
+      color: #af5d32;
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+    }
+
+    #s17a .vibe-tool-expanded .vchat-tool-metric.is-primary span {
+      font-size: 68px;
+      letter-spacing: 0;
+    }
+
+    #s17a .vibe-tool-expanded .vchat-tool-metric em {
+      font-style: normal;
+      font-size: 15px;
+      line-height: 1.5;
+      color: #756858;
+    }
+
     #s17a .vibe-bottom-note {
       padding: 18px 22px;
       border-radius: 26px;
@@ -13016,9 +13158,9 @@
     }
 
     #s33a .slide-page {
-      top: 8px;
-      right: 14px;
-      z-index: 12;
+      top: 12px;
+      right: 18px;
+      z-index: 5;
     }
 
     #s33a .model3-shell {
@@ -33260,7 +33402,8 @@
                 </div>
               </div>
             </div>
-          </div>`
+          </div>
+        </div>`
     };
 
     const V5_S37A = {
@@ -35057,12 +35200,96 @@
       advanceLocked = false;
     }
 
+    function renderVibeToolMarkup(mode = "preview") {
+      const isExpanded = mode === "expanded";
+      return `
+        <div class="vchat-tool-topbar">
+          <div class="vibe-window-dotset"><span></span><span></span><span></span></div>
+          <b>asset-calc.html</b>
+        </div>
+        <div class="vchat-tool-canvas">
+          <div class="vchat-tool-form">
+            ${isExpanded ? `
+              <label class="vchat-tool-row"><strong>房间数</strong><input type="range" min="80" max="240" value="120" data-vibe-calc="rooms"><span class="vibe-tool-value" data-vibe-value="rooms">120</span></label>
+              <label class="vchat-tool-row"><strong>月租金</strong><input type="range" min="1200" max="3600" value="2100" step="100" data-vibe-calc="rent"><span class="vibe-tool-value" data-vibe-value="rent">2100</span></label>
+              <label class="vchat-tool-row"><strong>出租率</strong><input type="range" min="55" max="100" value="86" data-vibe-calc="occupancy"><span class="vibe-tool-value" data-vibe-value="occupancy">86%</span></label>
+              <label class="vchat-tool-row"><strong>运营成本</strong><input type="range" min="18" max="45" value="34" data-vibe-calc="cost"><span class="vibe-tool-value" data-vibe-value="cost">34%</span></label>
+            ` : `
+              <div class="vchat-tool-row"><strong>房间数</strong><div class="vchat-tool-range" style="--fill:58%;"></div><span class="vibe-tool-value">120</span></div>
+              <div class="vchat-tool-row"><strong>月租金</strong><div class="vchat-tool-range" style="--fill:66%;"></div><span class="vibe-tool-value">2100</span></div>
+              <div class="vchat-tool-row"><strong>出租率</strong><div class="vchat-tool-range" style="--fill:78%;"></div><span class="vibe-tool-value">86%</span></div>
+              <div class="vchat-tool-row"><strong>运营成本</strong><div class="vchat-tool-range" style="--fill:41%;"></div><span class="vibe-tool-value">34%</span></div>
+            `}
+          </div>
+          <div class="vchat-tool-metrics">
+            <div class="vchat-tool-metric is-primary"><strong>月现金流</strong><span data-vibe-result="cashflow">¥143,035</span><em>租金收入扣除运营成本后的测算值。</em></div>
+            <div class="vchat-tool-metric"><strong>月租金收入</strong><span data-vibe-result="income">¥216,720</span><em>房间数 × 月租金 × 出租率。</em></div>
+            <div class="vchat-tool-metric"><strong>回本周期</strong><span data-vibe-result="payback">18.2 月</span><em>按 260 万元改造投入估算。</em></div>
+          </div>
+        </div>`;
+    }
+
+    function initVibeToolCalc(root) {
+      const inputs = Array.from(root.querySelectorAll("[data-vibe-calc]"));
+      if (!inputs.length) return;
+      const formatMoney = (value) => `¥${Math.round(value).toLocaleString("zh-CN")}`;
+      const update = () => {
+        const values = {};
+        inputs.forEach((input) => {
+          values[input.dataset.vibeCalc] = Number(input.value);
+          const valueNode = root.querySelector(`[data-vibe-value="${input.dataset.vibeCalc}"]`);
+          if (!valueNode) return;
+          valueNode.textContent = input.dataset.vibeCalc === "rooms"
+            ? input.value
+            : input.dataset.vibeCalc === "rent"
+              ? input.value
+              : `${input.value}%`;
+        });
+        const income = values.rooms * values.rent * values.occupancy / 100;
+        const cashflow = income * (1 - values.cost / 100);
+        const payback = cashflow > 0 ? 2600000 / cashflow : 0;
+        root.querySelector('[data-vibe-result="income"]').textContent = formatMoney(income);
+        root.querySelector('[data-vibe-result="cashflow"]').textContent = formatMoney(cashflow);
+        root.querySelector('[data-vibe-result="payback"]').textContent = `${payback.toFixed(1)} 月`;
+      };
+      inputs.forEach((input) => input.addEventListener("input", update));
+      update();
+    }
+
+    function closeExpandedVibeTool(overlay) {
+      if (!overlay) return;
+      overlay.classList.remove("is-live");
+      setTimeout(() => {
+        if (!overlay.classList.contains("is-live")) overlay.remove();
+      }, 360);
+    }
+
+    function showExpandedVibeTool(slide) {
+      let overlay = slide.querySelector(".vibe-tool-overlay");
+      if (!overlay) {
+        overlay = document.createElement("div");
+        overlay.className = "vibe-tool-overlay";
+        overlay.innerHTML = `<div class="vibe-tool-expanded">${renderVibeToolMarkup("expanded")}</div>`;
+        overlay.addEventListener("click", (event) => {
+          event.stopPropagation();
+          if (event.target === overlay) closeExpandedVibeTool(overlay);
+        });
+        overlay.addEventListener("mousedown", (event) => event.stopPropagation());
+        overlay.querySelector(".vibe-tool-expanded")?.addEventListener("click", (event) => event.stopPropagation());
+        overlay.querySelector(".vibe-tool-expanded")?.addEventListener("mousedown", (event) => event.stopPropagation());
+        slide.appendChild(overlay);
+        initVibeToolCalc(overlay);
+      }
+      requestAnimationFrame(() => overlay.classList.add("is-live"));
+    }
+
     async function playVibeChat(slide, token) {
       const win = slide.querySelector('.vibe-chat-win');
       const note = slide.querySelector('.vibe-bottom-note');
       if (!win || win.dataset.rendered) return;
       win.dataset.rendered = '1';
       if (note) note.classList.remove('is-live');
+      slide.querySelector(".vibe-tool-overlay")?.remove();
       win.innerHTML = `
         <div class="vchat-header">
           <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
@@ -35146,24 +35373,7 @@
 
       const toolWindow = document.createElement('div');
       toolWindow.className = 'vchat-tool-window';
-      toolWindow.innerHTML = `
-        <div class="vchat-tool-topbar">
-          <div class="vibe-window-dotset"><span></span><span></span><span></span></div>
-          <b>asset-calc.html</b>
-        </div>
-        <div class="vchat-tool-canvas">
-          <div class="vchat-tool-form">
-            <div class="vchat-tool-row"><strong>房间数</strong><div class="vchat-tool-range" style="--fill:58%;"></div><span>120</span></div>
-            <div class="vchat-tool-row"><strong>月租金</strong><div class="vchat-tool-range" style="--fill:66%;"></div><span>2100</span></div>
-            <div class="vchat-tool-row"><strong>出租率</strong><div class="vchat-tool-range" style="--fill:78%;"></div><span>86%</span></div>
-            <div class="vchat-tool-row"><strong>运营成本</strong><div class="vchat-tool-range" style="--fill:41%;"></div><span>34%</span></div>
-          </div>
-          <div class="vchat-tool-metrics">
-            <div class="vchat-tool-metric"><strong>月现金流</strong><span>¥166,320，会议上先看结果。</span></div>
-            <div class="vchat-tool-metric"><strong>回本周期</strong><span>18 个月，适合资产讨论场景。</span></div>
-            <div class="vchat-tool-metric"><strong>演示成品</strong><span>最后交付的是一个能直接拿去汇报的小工具。</span></div>
-          </div>
-        </div>`;
+      toolWindow.innerHTML = renderVibeToolMarkup("preview");
       successBubble.appendChild(toolWindow);
       scroll();
 
@@ -35173,7 +35383,7 @@
         advanceLocked = false;
         return;
       }
-      if (note) note.classList.add('is-live');
+      showExpandedVibeTool(slide);
       advanceLocked = false;
     }
 
