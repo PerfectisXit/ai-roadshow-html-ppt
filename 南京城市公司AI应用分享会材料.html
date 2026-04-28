@@ -10034,148 +10034,6 @@
       background: linear-gradient(90deg, #d8b17c, #8fd0e8);
     }
 
-    #s17a .vibe-tool-value {
-      min-width: 54px;
-      text-align: right;
-      font-variant-numeric: tabular-nums;
-    }
-
-    #s17a .vibe-tool-overlay {
-      position: absolute;
-      inset: 0;
-      z-index: 12;
-      display: grid;
-      place-items: center;
-      padding: 106px 120px 72px;
-      background:
-        radial-gradient(circle at 50% 46%, rgba(255, 255, 255, 0.54), rgba(244, 235, 224, 0.34) 42%, rgba(22, 17, 12, 0.18) 100%);
-      backdrop-filter: blur(18px) saturate(1.35);
-      -webkit-backdrop-filter: blur(18px) saturate(1.35);
-      opacity: 0;
-      pointer-events: none;
-      transform: scale(0.96);
-      transition: opacity .34s ease, transform .34s ease;
-    }
-
-    #s17a .vibe-tool-overlay.is-live {
-      opacity: 1;
-      pointer-events: auto;
-      transform: scale(1);
-    }
-
-    #s17a .vibe-tool-expanded {
-      width: min(1180px, 100%);
-      border-radius: 28px;
-      overflow: hidden;
-      background: linear-gradient(180deg, rgba(255, 253, 249, 0.88), rgba(244, 234, 223, 0.76));
-      border: 1px solid rgba(255, 255, 255, 0.54);
-      box-shadow: 0 34px 80px rgba(78, 56, 32, 0.24);
-      backdrop-filter: blur(24px) saturate(1.28);
-      -webkit-backdrop-filter: blur(24px) saturate(1.28);
-      color: #241d17;
-    }
-
-    #s17a .vibe-tool-expanded .vchat-tool-topbar {
-      padding: 18px 22px;
-      background: #efe5da;
-      border-bottom: 1px solid rgba(213, 197, 178, 0.88);
-    }
-
-    #s17a .vibe-tool-expanded .vchat-tool-topbar b {
-      font-size: 16px;
-    }
-
-    #s17a .vibe-tool-expanded .vchat-tool-canvas {
-      padding: 28px;
-      display: grid;
-      grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
-      gap: 24px;
-    }
-
-    #s17a .vibe-tool-expanded .vchat-tool-form {
-      display: grid;
-      gap: 16px;
-    }
-
-    #s17a .vibe-tool-expanded .vchat-tool-row {
-      padding: 18px 20px;
-      border-radius: 18px;
-      background: rgba(255, 255, 255, 0.9);
-      border: 1px solid rgba(193, 162, 125, 0.18);
-      display: grid;
-      grid-template-columns: 116px minmax(0, 1fr) 76px;
-      align-items: center;
-      gap: 18px;
-    }
-
-    #s17a .vibe-tool-expanded .vchat-tool-row strong {
-      font-size: 20px;
-      color: #241d17;
-    }
-
-    #s17a .vibe-tool-expanded .vchat-tool-row input[type="range"] {
-      width: 100%;
-      accent-color: #b86b38;
-      cursor: pointer;
-    }
-
-    #s17a .vibe-tool-expanded .vchat-tool-row .vibe-tool-value {
-      font-family: "DM Mono", monospace;
-      font-size: 18px;
-      color: #6b5b4b;
-    }
-
-    #s17a .vibe-tool-expanded .vchat-tool-metrics {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
-    }
-
-    #s17a .vibe-tool-expanded .vchat-tool-metric {
-      min-height: 142px;
-      padding: 20px;
-      border-radius: 20px;
-      background: rgba(255, 255, 255, 0.9);
-      border: 1px solid rgba(193, 162, 125, 0.18);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 10px;
-    }
-
-    #s17a .vibe-tool-expanded .vchat-tool-metric.is-primary {
-      grid-column: span 2;
-      min-height: 178px;
-      background: linear-gradient(135deg, rgba(255, 249, 241, 0.98), rgba(235, 247, 248, 0.92));
-      border-color: rgba(184, 107, 56, 0.22);
-    }
-
-    #s17a .vibe-tool-expanded .vchat-tool-metric strong {
-      font-size: 19px;
-      color: #574637;
-    }
-
-    #s17a .vibe-tool-expanded .vchat-tool-metric span {
-      font-family: "Space Grotesk", "Noto Sans SC", sans-serif;
-      font-size: 36px;
-      line-height: 1;
-      color: #af5d32;
-      font-weight: 700;
-      font-variant-numeric: tabular-nums;
-    }
-
-    #s17a .vibe-tool-expanded .vchat-tool-metric.is-primary span {
-      font-size: 68px;
-      letter-spacing: 0;
-    }
-
-    #s17a .vibe-tool-expanded .vchat-tool-metric em {
-      font-style: normal;
-      font-size: 15px;
-      line-height: 1.5;
-      color: #756858;
-    }
-
     #s17a .vibe-bottom-note {
       padding: 18px 22px;
       border-radius: 26px;
@@ -13158,9 +13016,9 @@
     }
 
     #s33a .slide-page {
-      top: 12px;
-      right: 18px;
-      z-index: 5;
+      top: 8px;
+      right: 14px;
+      z-index: 12;
     }
 
     #s33a .model3-shell {
@@ -22677,9 +22535,8 @@
     }
 
     #s08 .impact-grid line {
-      stroke: rgba(194, 182, 168, 0.24);
+      stroke: rgba(194, 182, 168, 0.38);
       stroke-width: 1;
-      stroke-dasharray: 2 8;
     }
 
     #s08 .impact-chart-title {
@@ -22691,12 +22548,13 @@
     }
 
     #s08 .impact-axis-line {
-      stroke: rgba(44, 36, 29, 0.62);
-      stroke-width: 1.5;
+      stroke: rgba(44, 36, 29, 0.9);
+      stroke-width: 1.8;
       stroke-linecap: round;
     }
 
     #s08 .impact-axis text,
+    #s08 .impact-end-label text,
     #s08 .impact-birth text {
       font-family: "DM Sans", "Noto Sans SC", sans-serif;
       font-size: 13px;
@@ -22710,23 +22568,20 @@
       fill: #9b8a79;
     }
 
+    #s08 .impact-end-label text {
+      font-weight: 700;
+      font-size: 12px;
+    }
+
     #s08 .impact-legend rect {
-      fill: rgba(255, 255, 255, 0.78);
-      stroke: rgba(214, 199, 181, 0.78);
-      stroke-width: 1.2;
-      filter: drop-shadow(0 12px 18px rgba(102, 76, 48, 0.1));
+      fill: rgba(255, 255, 255, 0.94);
+      stroke: rgba(43, 37, 31, 0.84);
+      stroke-width: 1.6;
     }
 
     #s08 .impact-legend-item text {
-      font-size: 11px;
+      font-size: 12px;
       fill: #2d261e;
-      font-weight: 700;
-      dominant-baseline: middle;
-    }
-
-    #s08 .impact-legend-item .legend-stars {
-      fill: #847668;
-      font-weight: 600;
     }
 
     #s08 .impact-line-base,
@@ -22737,18 +22592,17 @@
     }
 
     #s08 .impact-line-base {
-      stroke-width: 7;
-      opacity: 0.1;
+      stroke-width: 5;
+      opacity: 0.08;
     }
 
     #s08 .impact-line {
-      stroke-width: 3.3;
+      stroke-width: 2.7;
       opacity: 0.98;
       stroke-dasharray: 100;
       stroke-dashoffset: 100;
-      animation: s08CurveDraw 1.75s cubic-bezier(.22,.88,.28,1) forwards;
+      animation: s08CurveDraw 1.6s cubic-bezier(.22,.88,.28,1) forwards;
       animation-delay: var(--delay, 0s);
-      filter: drop-shadow(0 8px 10px rgba(112, 74, 38, 0.08));
     }
 
     #s08 .impact-point-core {
@@ -22763,28 +22617,6 @@
       opacity: 0;
       animation: fadeUp 0.45s ease forwards;
       animation-delay: calc(var(--delay, 0s) + 1.2s);
-    }
-
-    #s08 .impact-lobster-run {
-      opacity: 0;
-      animation: s08LobsterFade 0.18s ease forwards;
-      animation-delay: var(--delay, 0s);
-    }
-
-    #s08 .impact-lobster-run text {
-      font-size: 26px;
-      dominant-baseline: middle;
-      text-anchor: middle;
-      filter: drop-shadow(0 8px 10px rgba(146, 72, 37, 0.22));
-    }
-
-    #s08 .impact-lobster-run animateMotion {
-      rotate: auto;
-    }
-
-    @keyframes s08LobsterFade {
-      from { opacity: 0; }
-      to { opacity: 1; }
     }
 
     #s08 .openclaw-chart-note {
@@ -33428,8 +33260,7 @@
                 </div>
               </div>
             </div>
-          </div>
-        </div>`
+          </div>`
     };
 
     const V5_S37A = {
@@ -33865,8 +33696,8 @@
         repo: "python/cpython",
         birthLabel: "1991",
         birthYear: 1991,
-        stars: 72487,
-        starsLabel: "72.5k",
+        stars: 71934,
+        starsLabel: "71.9k",
         blurb: "把“可读性优先”做成了现代开发的常识入口。",
         context: "它代表的是语言生态本身的长期曲线，很适合拿来当元老级标尺。",
         meter: "72%",
@@ -33893,8 +33724,8 @@
         repo: "torvalds/linux",
         birthLabel: "1991",
         birthYear: 1991.65,
-        stars: 231051,
-        starsLabel: "231.1k",
+        stars: 222800,
+        starsLabel: "222.8k",
         blurb: "三十多年还在持续上升，基础设施级开源共识项目。",
         context: "Linux 代表底层世界的长期积累曲线，本来就很难被轻易拉平。",
         meter: "90%",
@@ -33921,8 +33752,8 @@
         repo: "facebook/react",
         birthLabel: "2013",
         birthYear: 2013.4,
-        stars: 244728,
-        starsLabel: "244.7k",
+        stars: 243918,
+        starsLabel: "243.9k",
         blurb: "2013 开源后十多年，迅速变成现代前端的主流语法。",
         context: "它本来已经是“新一代开源爆发”的代表曲线，但放进这张图里，OpenClaw 还是更陡。",
         meter: "94%",
@@ -33948,8 +33779,8 @@
         repo: "openclaw/openclaw",
         birthLabel: "2025.11",
         birthYear: 2025.9,
-        stars: 365358,
-        starsLabel: "365.4k",
+        stars: 314070,
+        starsLabel: "314.1k",
         blurb: "2025 年 11 月才出现，却在几个月内把整张开源坐标系拉到自己身边。",
         meter: "100%",
         gradient: ["#ea6f3d", "#ea6f3d"],
@@ -33969,24 +33800,13 @@
     ];
 
     function buildV5S08Path(points) {
-      const scaled = points.map(([year, score]) => ({
-        x: scaleV5S08Year(year),
-        y: scaleV5S08Score(score)
-      }));
-      if (scaled.length < 2) return "";
-      const commands = [`M ${scaled[0].x.toFixed(1)} ${scaled[0].y.toFixed(1)}`];
-      for (let i = 0; i < scaled.length - 1; i += 1) {
-        const p0 = scaled[Math.max(0, i - 1)];
-        const p1 = scaled[i];
-        const p2 = scaled[i + 1];
-        const p3 = scaled[Math.min(scaled.length - 1, i + 2)];
-        const c1x = p1.x + (p2.x - p0.x) / 6;
-        const c1y = p1.y + (p2.y - p0.y) / 6;
-        const c2x = p2.x - (p3.x - p1.x) / 6;
-        const c2y = p2.y - (p3.y - p1.y) / 6;
-        commands.push(`C ${c1x.toFixed(1)} ${c1y.toFixed(1)}, ${c2x.toFixed(1)} ${c2y.toFixed(1)}, ${p2.x.toFixed(1)} ${p2.y.toFixed(1)}`);
-      }
-      return commands.join(" ");
+      return points
+        .map(([year, score], index) => {
+          const x = scaleV5S08Year(year).toFixed(1);
+          const y = scaleV5S08Score(score).toFixed(1);
+          return `${index === 0 ? "M" : "L"} ${x} ${y}`;
+        })
+        .join(" ");
     }
 
     function scaleV5S08Year(year) {
@@ -34007,8 +33827,8 @@
       const scoreTicks = [0, 25, 50, 75, 100];
       const legendX = padding.left + 16;
       const legendY = padding.top + 22;
-      const legendWidth = 292;
-      const legendHeight = 132;
+      const legendWidth = 258;
+      const legendHeight = 118;
 
       const gradientDefs = V5_S08_IMPACT_SERIES.map((series) => `
         <linearGradient id="v5s08-${series.key}-line" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -34039,12 +33859,11 @@
         <g class="impact-legend">
           <rect x="${legendX}" y="${legendY}" width="${legendWidth}" height="${legendHeight}" rx="14"></rect>
           ${V5_S08_IMPACT_SERIES.map((series, index) => {
-            const y = legendY + 26 + index * 26;
+            const y = legendY + 28 + index * 22;
             return `
               <g class="impact-legend-item" transform="translate(${legendX + 18} ${y})">
                 <circle cx="0" cy="0" r="4.5" fill="${series.gradient[1]}"></circle>
-                <text x="14" y="0">${series.label}</text>
-                <text class="legend-stars" x="${legendWidth - 50}" y="0" text-anchor="end">${series.starsLabel}</text>
+                <text x="14" y="5">${series.repo}</text>
               </g>
             `;
           }).join("")}
@@ -34053,17 +33872,16 @@
 
       const seriesMarkup = V5_S08_IMPACT_SERIES.map((series) => {
         const path = buildV5S08Path(series.points);
-        const lobsterMarkup = series.key === "openclaw" ? `
-            <g class="impact-lobster-run" style="--delay:${series.delay};">
-              <text x="0" y="0">🦞</text>
-              <animateMotion dur="1.75s" begin="${series.delay}" fill="freeze" calcMode="spline" keyTimes="0;1" keySplines=".22 .88 .28 1" path="${path}"></animateMotion>
-            </g>
-          ` : "";
+        const [endYear, endScore] = series.points[series.points.length - 1];
+        const endX = scaleV5S08Year(endYear) + series.labelDx;
+        const endY = scaleV5S08Score(endScore) + series.labelDy;
         return `
           <g style="--delay:${series.delay}; --label:${series.labelColor};">
             <path class="impact-line-base" d="${path}" stroke="url(#v5s08-${series.key}-line)"></path>
             <path class="impact-line" d="${path}" stroke="url(#v5s08-${series.key}-line)" pathLength="100"></path>
-            ${lobsterMarkup}
+            <g class="impact-end-label">
+              <text x="${endX.toFixed(1)}" y="${endY.toFixed(1)}">${series.label} · ${series.starsLabel}</text>
+            </g>
           </g>
         `;
       }).join("");
@@ -34127,8 +33945,8 @@
             <div class="openclaw-impact-summary">
               <div class="openclaw-proof-pill">
                 <div class="mini-label">GitHub 官方仓库</div>
-                <strong data-counter="365358" data-format="short">0</strong>
-                <span>OpenClaw 创建于 2025-11-24，却在 2026 年 4 月已经把整条曲线抬到顶格。</span>
+                <strong data-counter="314070" data-format="short">0</strong>
+                <span>OpenClaw 创建于 2025-11-24，却在 2026 年 3 月已经把整条曲线抬到顶格。</span>
               </div>
               <div class="openclaw-race-stat">
                 <strong>2025.11</strong>
@@ -35239,103 +35057,12 @@
       advanceLocked = false;
     }
 
-    function replayOpenClawImpactChart(slide) {
-      const svg = slide.querySelector(".openclaw-chart");
-      if (!svg) return;
-      const clone = svg.cloneNode(true);
-      svg.replaceWith(clone);
-    }
-
-    function renderVibeToolMarkup(mode = "preview") {
-      const isExpanded = mode === "expanded";
-      return `
-        <div class="vchat-tool-topbar">
-          <div class="vibe-window-dotset"><span></span><span></span><span></span></div>
-          <b>asset-calc.html</b>
-        </div>
-        <div class="vchat-tool-canvas">
-          <div class="vchat-tool-form">
-            ${isExpanded ? `
-              <label class="vchat-tool-row"><strong>房间数</strong><input type="range" min="80" max="240" value="120" data-vibe-calc="rooms"><span class="vibe-tool-value" data-vibe-value="rooms">120</span></label>
-              <label class="vchat-tool-row"><strong>月租金</strong><input type="range" min="1200" max="3600" value="2100" step="100" data-vibe-calc="rent"><span class="vibe-tool-value" data-vibe-value="rent">2100</span></label>
-              <label class="vchat-tool-row"><strong>出租率</strong><input type="range" min="55" max="100" value="86" data-vibe-calc="occupancy"><span class="vibe-tool-value" data-vibe-value="occupancy">86%</span></label>
-              <label class="vchat-tool-row"><strong>运营成本</strong><input type="range" min="18" max="45" value="34" data-vibe-calc="cost"><span class="vibe-tool-value" data-vibe-value="cost">34%</span></label>
-            ` : `
-              <div class="vchat-tool-row"><strong>房间数</strong><div class="vchat-tool-range" style="--fill:58%;"></div><span class="vibe-tool-value">120</span></div>
-              <div class="vchat-tool-row"><strong>月租金</strong><div class="vchat-tool-range" style="--fill:66%;"></div><span class="vibe-tool-value">2100</span></div>
-              <div class="vchat-tool-row"><strong>出租率</strong><div class="vchat-tool-range" style="--fill:78%;"></div><span class="vibe-tool-value">86%</span></div>
-              <div class="vchat-tool-row"><strong>运营成本</strong><div class="vchat-tool-range" style="--fill:41%;"></div><span class="vibe-tool-value">34%</span></div>
-            `}
-          </div>
-          <div class="vchat-tool-metrics">
-            <div class="vchat-tool-metric is-primary"><strong>月现金流</strong><span data-vibe-result="cashflow">¥143,035</span><em>租金收入扣除运营成本后的测算值。</em></div>
-            <div class="vchat-tool-metric"><strong>月租金收入</strong><span data-vibe-result="income">¥216,720</span><em>房间数 × 月租金 × 出租率。</em></div>
-            <div class="vchat-tool-metric"><strong>回本周期</strong><span data-vibe-result="payback">18.2 月</span><em>按 260 万元改造投入估算。</em></div>
-          </div>
-        </div>`;
-    }
-
-    function initVibeToolCalc(root) {
-      const inputs = Array.from(root.querySelectorAll("[data-vibe-calc]"));
-      if (!inputs.length) return;
-      const formatMoney = (value) => `¥${Math.round(value).toLocaleString("zh-CN")}`;
-      const update = () => {
-        const values = {};
-        inputs.forEach((input) => {
-          values[input.dataset.vibeCalc] = Number(input.value);
-          const valueNode = root.querySelector(`[data-vibe-value="${input.dataset.vibeCalc}"]`);
-          if (!valueNode) return;
-          valueNode.textContent = input.dataset.vibeCalc === "rooms"
-            ? input.value
-            : input.dataset.vibeCalc === "rent"
-              ? input.value
-              : `${input.value}%`;
-        });
-        const income = values.rooms * values.rent * values.occupancy / 100;
-        const cashflow = income * (1 - values.cost / 100);
-        const payback = cashflow > 0 ? 2600000 / cashflow : 0;
-        root.querySelector('[data-vibe-result="income"]').textContent = formatMoney(income);
-        root.querySelector('[data-vibe-result="cashflow"]').textContent = formatMoney(cashflow);
-        root.querySelector('[data-vibe-result="payback"]').textContent = `${payback.toFixed(1)} 月`;
-      };
-      inputs.forEach((input) => input.addEventListener("input", update));
-      update();
-    }
-
-    function closeExpandedVibeTool(overlay) {
-      if (!overlay) return;
-      overlay.classList.remove("is-live");
-      setTimeout(() => {
-        if (!overlay.classList.contains("is-live")) overlay.remove();
-      }, 360);
-    }
-
-    function showExpandedVibeTool(slide) {
-      let overlay = slide.querySelector(".vibe-tool-overlay");
-      if (!overlay) {
-        overlay = document.createElement("div");
-        overlay.className = "vibe-tool-overlay";
-        overlay.innerHTML = `<div class="vibe-tool-expanded">${renderVibeToolMarkup("expanded")}</div>`;
-        overlay.addEventListener("click", (event) => {
-          event.stopPropagation();
-          if (event.target === overlay) closeExpandedVibeTool(overlay);
-        });
-        overlay.addEventListener("mousedown", (event) => event.stopPropagation());
-        overlay.querySelector(".vibe-tool-expanded")?.addEventListener("click", (event) => event.stopPropagation());
-        overlay.querySelector(".vibe-tool-expanded")?.addEventListener("mousedown", (event) => event.stopPropagation());
-        slide.appendChild(overlay);
-        initVibeToolCalc(overlay);
-      }
-      requestAnimationFrame(() => overlay.classList.add("is-live"));
-    }
-
     async function playVibeChat(slide, token) {
       const win = slide.querySelector('.vibe-chat-win');
       const note = slide.querySelector('.vibe-bottom-note');
       if (!win || win.dataset.rendered) return;
       win.dataset.rendered = '1';
       if (note) note.classList.remove('is-live');
-      slide.querySelector(".vibe-tool-overlay")?.remove();
       win.innerHTML = `
         <div class="vchat-header">
           <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
@@ -35419,7 +35146,24 @@
 
       const toolWindow = document.createElement('div');
       toolWindow.className = 'vchat-tool-window';
-      toolWindow.innerHTML = renderVibeToolMarkup("preview");
+      toolWindow.innerHTML = `
+        <div class="vchat-tool-topbar">
+          <div class="vibe-window-dotset"><span></span><span></span><span></span></div>
+          <b>asset-calc.html</b>
+        </div>
+        <div class="vchat-tool-canvas">
+          <div class="vchat-tool-form">
+            <div class="vchat-tool-row"><strong>房间数</strong><div class="vchat-tool-range" style="--fill:58%;"></div><span>120</span></div>
+            <div class="vchat-tool-row"><strong>月租金</strong><div class="vchat-tool-range" style="--fill:66%;"></div><span>2100</span></div>
+            <div class="vchat-tool-row"><strong>出租率</strong><div class="vchat-tool-range" style="--fill:78%;"></div><span>86%</span></div>
+            <div class="vchat-tool-row"><strong>运营成本</strong><div class="vchat-tool-range" style="--fill:41%;"></div><span>34%</span></div>
+          </div>
+          <div class="vchat-tool-metrics">
+            <div class="vchat-tool-metric"><strong>月现金流</strong><span>¥166,320，会议上先看结果。</span></div>
+            <div class="vchat-tool-metric"><strong>回本周期</strong><span>18 个月，适合资产讨论场景。</span></div>
+            <div class="vchat-tool-metric"><strong>演示成品</strong><span>最后交付的是一个能直接拿去汇报的小工具。</span></div>
+          </div>
+        </div>`;
       successBubble.appendChild(toolWindow);
       scroll();
 
@@ -35429,7 +35173,7 @@
         advanceLocked = false;
         return;
       }
-      showExpandedVibeTool(slide);
+      if (note) note.classList.add('is-live');
       advanceLocked = false;
     }
 
@@ -35808,7 +35552,6 @@
 
     const SLIDE_ANIMATION_HOOKS = {
       s05: playVoiceChat,
-      s08: replayOpenClawImpactChart,
       s17a: playVibeChat,
       s06: playTerminalLog,
       s20: playCaseWorkbench,
